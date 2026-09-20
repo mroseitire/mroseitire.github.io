@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>短道速滑世界杯 - 全球顶级赛事资讯、赛程直播与选手数据平台</title>
+    <meta name="description" content="短道速滑世界杯官方网站提供最新的赛事赛程、实时直播、精彩集锦、运动员成绩数据及历史战绩查询，助您全方位了解短道速滑世界杯。">
+    <meta name="keywords" content="短道速滑世界杯, 短道速滑赛程, 短道速滑直播, 短道速滑成绩, 短道速滑选手">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #00a8e8;
+            --accent-color: #ff4d4f;
+            --dark-bg: #1a1a1a;
+            --light-bg: #f8f9fa;
+            --text-main: #333333;
+            --text-light: #666666;
+            --white: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--light-bg);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-main);
+            transition: var(--transition);
+            padding: 5px 0;
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .btn-subscribe {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-subscribe:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 40px;
+        }
+
+        .stat-item h3 {
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            font-size: 14px;
+            margin: 0;
+            opacity: 0.8;
+        }
+
+        /* Main Content */
+        main {
+            padding: 40px 0;
+        }
+
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2 {
+            font-size: 24px;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        .section-title h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -17px;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .view-all {
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Upcoming Schedule */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .schedule-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid #eee;
+        }
+
+        .schedule-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .card-header {
+            background-color: #f1f8ff;
+            padding: 15px;
+            border-bottom: 1px solid #e1e8ed;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .round-badge {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .location {
+            font-size: 13px;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .date-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .date-box {
+            background-color: var(--white);
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: 700;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .date-box span {
+            display: block;
+            font-size: 10px;
+            font-weight: 400;
+        }
+
+        .time {
+            margin-left: 15px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .status-tag {
+            display: inline-block;
+            margin-top: 15px;
+            font-size: 12px;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .status-tag.live {
+            background-color: #fff1f0;
+            color: var(--accent-color);
+            border: 1px solid #ffa39e;
+        }
+
+        .status-tag.upcoming {
+            background-color: #f6ffed;
+            color: #52c41a;
+            border: 1px solid #b7eb8f;
+        }
+
+        .status-tag.finished {
+            background-color: #f5f5f5;
+            color: #8c8c8c;
+            border: 1px solid #d9d9d9;
+        }
+
+        /* Featured Athletes */
+        .athlete-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .athlete-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 20px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .athlete-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #eee;
+            margin: 0 auto 15px;
+            object-fit: cover;
+            border: 3px solid var(--secondary-color);
+        }
+
+        .athlete-name {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .athlete-country {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .athlete-stats {
+            display: flex;
+            justify-content: space-around;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+
+        .stat-box strong {
+            display: block;
+            font-size: 18px;
+            color: var(--primary-color);
+        }
+
+        .stat-box span {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        /* Data & Tables */
+        .data-section {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .data-table th, .data-table td {
+            text-align: left;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .data-table th {
+            background-color: #f9f9f9;
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        .data-table tr:hover {
+            background-color: #f1f8ff;
+        }
+
+        .rank-num {
+            font-weight: 800;
+            width: 40px;
+        }
+
+        .rank-1 { color: #faad14; }
+        .rank-2 { color: #a0d911; }
+        .rank-3 { color: #fa541c; }
+
+        /* FAQ Section */
+        .faq-section {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 24px;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+
+        .faq-answer {
+            color: var(--text-light);
+            display: none;
+            padding-left: 10px;
+            border-left: 3px solid var(--secondary-color);
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-bg);
+            color: #ccc;
+            padding: 60px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                font-size: 14px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .data-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" fill="currentColor"/>
+                    <path d="M8 12L11 15L16 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>SpeedSkate</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">赛程直播</a></li>
+                    <li><a href="#">积分榜</a></li>
+                    <li><a href="#">选手数据</a></li>
+                    <li><a href="#">精彩集锦</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="btn-subscribe">订阅赛事提醒</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>短道速滑世界杯</h1>
+            <p>汇聚全球顶尖短道速滑选手，见证速度与激情的巅峰对决。实时更新赛程、成绩与精彩瞬间。</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <h3>2023-2024</h3>
+                    <p>赛季正在进行</p>
+                </div>
+                <div class="stat-item">
+                    <h3>8站</h3>
+                    <p>全球分站赛</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24+</h3>
+                    <p>参赛国家/地区</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        
+        <!-- 最新赛程 -->
+        <section>
+            <div class="section-title">
+                <h2>即将开赛</h2>
+                <a href="#" class="view-all">查看全部赛程 &rarr;</a>
+            </div>
+            <div class="schedule-grid">
+                <!-- Card 1 -->
+                <div class="schedule-card">
+                    <div class="card-header">
+                        <span class="round-badge">第5站</span>
+                        <span class="location">📍 中国·哈尔滨</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="date-row">
+                            <div class="date-box">
+                                12
+                                <span>12月</span>
+                            </div>
+                            <div class="time">14:00 - 18:00</div>
+                        </div>
+                        <div class="status-tag live">🔥 直播中</div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="schedule-card">
+                    <div class="card-header">
+                        <span class="round-badge">第6站</span>
+                        <span class="location">📍 加拿大·魁北克</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="date-row">
+                            <div class="date-box">
+                                01
+                                <span>1月</span>
+                            </div>
+                            <div class="time">19:00 - 23:00</div>
+                        </div>
+                        <div class="status-tag upcoming">即将开始</div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="schedule-card">
+                    <div class="card-header">
+                        <span class="round-badge">第7站</span>
+                        <span class="location">📍 韩国·首尔</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="date-row">
+                            <div class="date-box">
+                                02
+                                <span>1月</span>
+                            </div>
+                            <div class="time">待定</div>
+                        </div>
+                        <div class="status-tag upcoming">待定</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 热门选手 -->
+        <section style="margin-top: 50px;">
+            <div class="section-title">
+                <h2>焦点选手</h2>
+                <a href="#" class="view-all">选手数据中心 &rarr;</a>
+            </div>
+            <div class="athlete-grid">
+                <div class="athlete-card">
+                    <img src="https://picsum.photos/seed/skater1/200/200" alt="选手头像" class="avatar">
+                    <h3 class="athlete-name">黄大宪</h3>
+                    <p class="athlete-country">🇰🇷 韩国</p>
+                    <div class="athlete-stats">
+                        <div class="stat-box">
+                            <strong>85</strong>
+                            <span>总积分</span>
+                        </div>
+                        <div class="stat-box">
+                            <strong>12</strong>
+                            <span>冠军</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="athlete-card">
+                    <img src="https://picsum.photos/seed/skater2/200/200" alt="选手头像" class="avatar">
+                    <h3 class="athlete-name">李俊瑞</h3>
+                    <p class="athlete-country">🇰🇷 韩国</p>
+                    <div class="athlete-stats">
+                        <div class="stat-box">
+                            <strong>82</strong>
+                            <span>总积分</span>
+                        </div>
+                        <div class="stat-box">
+                            <strong>10</strong>
+                            <span>冠军</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="athlete-card">
+                    <img src="https://picsum.photos/seed/skater3/200/200" alt="选手头像" class="avatar">
+                    <h3 class="athlete-name">范可新</h3>
+                    <p class="athlete-country">🇨🇳 中国</p>
+                    <div class="athlete-stats">
+                        <div class="stat-box">
+                            <strong>78</strong>
+                            <span>总积分</span>
+                        </div>
+                        <div class="stat-box">
+                            <strong>8</strong>
+                            <span>冠军</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="athlete-card">
+                    <img src="https://picsum.photos/seed/skater4/200/200" alt="选手头像" class="avatar">
+                    <h3 class="athlete-name">安德烈·莫斯</h3>
+                    <p class="athlete-country">🇨🇦 加拿大</p>
+                    <div class="athlete-stats">
+                        <div class="stat-box">
+                            <strong>75</strong>
+                            <span>总积分</span>
+                        </div>
+                        <div class="stat-box">
+                            <strong>6</strong>
+                            <span>冠军</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 实时积分榜 -->
+        <section style="margin-top: 50px;">
+            <div class="section-title">
+                <h2>短道速滑世界杯积分榜 (男子500米)</h2>
+                <a href="#" class="view-all">查看完整榜单 &rarr;</a>
+            </div>
+            <div class="data-section">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>排名</th>
+                            <th>选手姓名</th>
+                            <th>国家/地区</th>
+                            <th>2023/24赛季积分</th>
+                            <th>最近成绩</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="rank-num rank-1">1</td>
+                            <td>黄大宪</td>
+                            <td>🇰🇷</td>
+                            <td>85</td>
+                            <td>金牌 (哈尔滨站)</td>
+                        </tr>
+                        <tr>
+                            <td class="rank-num rank-2">2</td>
+                            <td>李俊瑞</td>
+                            <td>🇰🇷</td>
+                            <td>82</td>
+                            <td>银牌 (哈尔滨站)</td>
+                        </tr>
+                        <tr>
+                            <td class="rank-num rank-3">3</td>
+                            <td>范可新</td>
+                            <td>🇨🇳</td>
+                            <td>78</td>
+                            <td>铜牌 (哈尔滨站)</td>
+                        </tr>
+                        <tr>
+                            <td class="rank-num">4</td>
+                            <td>安德烈·莫斯</td>
+                            <td>🇨🇦</td>
+                            <td>75</td>
+                            <td>金牌 (蒙特利尔站)</td>
+                        </tr>
+                        <tr>
+                            <td class="rank-num">5</td>
+                            <td>郭伟阳</td>
+                            <td>🇨🇳</td>
+                            <td>72</td>
+                            <td>银牌 (蒙特利尔站)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 常见问题 -->
+        <section class="faq-section">
+            <div class="section-title">
+                <h2>常见问题 (FAQ)</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item active">
+                    <div class="faq-question">短道速滑世界杯是什么级别的比赛？</div>
+                    <div class="faq-answer">
+                        短道速滑世界杯是由国际滑联（ISU）主办的最高水平短道速滑年度系列赛之一。它汇集了全球最顶尖的短道速滑运动员，是冬奥会前最重要的积分赛事。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">如何观看短道速滑世界杯的直播？</div>
+                    <div class="faq-answer">
+                        您可以通过本站提供的直播链接观看比赛，或关注相关体育频道的转播安排。部分场次也会在官方社交媒体平台进行实时集锦直播。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">比赛中的犯规有哪些常见类型？</div>
+                    <div class="faq-answer">
+                        常见犯规包括：阻挡、推人、抢跑、冰刀干扰、非正常滑行（如压弯道时离开赛道）等。裁判组会根据视频回放和现场情况判罚。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <p style="font-size: 14px; line-height: 1.8;">
+                        SpeedSkate致力于为全球短道速滑爱好者提供最权威、最及时的赛事资讯与数据服务。我们专注于短道速滑世界杯及相关赛事的深度报道。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速导航</h4>
+                    <ul>
+                        <li><a href="#">赛程查询</a></li>
+                        <li><a href="#">积分排名</a></li>
+                        <li><a href="#">选手资料库</a></li>
+                        <li><a href="#">历史数据</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>赛事资讯</h4>
+                    <ul>
+                        <li><a href="#">最新动态</a></li>
+                        <li><a href="#">技术分析</a></li>
+                        <li><a href="#">训练基地介绍</a></li>
+                        <li><a href="#">装备指南</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系方式</h4>
+                    <ul>
+                        <li>邮箱：contact@speedskate.com</li>
+                        <li>电话：400-123-4567</li>
+                        <li>地址：北京市朝阳区体育中心路88号</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023-2024 短道速滑世界杯官方网站. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ 交互逻辑
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const parent = item.parentElement;
+                const isActive = parent.classList.contains('active');
+                
+                // 关闭所有打开的项
+                document.querySelectorAll('.faq-item').forEach(child => {
+                    child.classList.remove('active');
+                });
+
+                // 如果之前没有打开，则打开当前项
+                if (!isActive) {
+                    parent.classList.add('active');
+                }
+            });
+        });
+
+        // 简单的导航高亮逻辑
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                document.querySelectorAll('nav a').forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+    </script>
+</body>
+                          </html>
