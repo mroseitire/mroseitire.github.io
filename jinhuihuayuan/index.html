@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="金汇花园官方网站 - 提供小区楼盘详情、周边配套、物业管理、户型图及业主生活指南。了解金汇花园的居住环境与社区服务。">
+    <meta name="keywords" content="金汇花园, 小区楼盘, 房产资讯, 业主论坛, 社区服务">
+    <title>金汇花园-品质住宅社区与生活服务平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e67e22;
+            --bg-light: #f4f6f9;
+            --text-dark: #333;
+            --text-gray: #666;
+            --white: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0,0,0,0.05);
+            --container-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 10px auto 0;
+        }
+
+        .section-header p {
+            color: var(--text-gray);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .top-bar {
+            background-color: var(--primary-color);
+            color: var(--white);
+            font-size: 0.85rem;
+            padding: 8px 0;
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+            margin-left: 5px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-color);
+        }
+
+        .header-actions .btn {
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+            margin-right: 10px;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: var(--white);
+            border: 1px solid var(--accent-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #d35400;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.7)), url('https://picsum.photos/seed/house/1920/800') no-repeat center center/cover;
+            color: var(--white);
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 60px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 30px;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--accent-color);
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Feature Grid */
+        .features {
+            background-color: var(--white);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            padding: 30px;
+            text-align: center;
+            border-radius: var(--border-radius);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        /* Project Info */
+        .project-info {
+            background-color: var(--bg-light);
+        }
+
+        .info-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .info-image img {
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .info-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .info-content p {
+            margin-bottom: 20px;
+            color: var(--text-gray);
+        }
+
+        .info-list {
+            margin: 30px 0;
+        }
+
+        .info-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-list li::before {
+            content: '✔';
+            color: var(--accent-color);
+            margin-right: 10px;
+        }
+
+        /* Amenities */
+        .amenities {
+            background-color: var(--white);
+        }
+
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .amenity-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: var(--border-radius);
+        }
+
+        .amenity-item i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        /* Community Section */
+        .community {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .community .section-header h2 {
+            color: var(--white);
+        }
+
+        .community .section-header p {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .news-card {
+            background-color: rgba(255,255,255,0.1);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: background 0.3s;
+        }
+
+        .news-card:hover {
+            background-color: rgba(255,255,255,0.15);
+        }
+
+        .news-content {
+            padding: 20px;
+        }
+
+        .news-date {
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .news-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .news-content p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a252f;
+            color: #bdc3c7;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-wrapper {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .info-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <span>欢迎访问金汇花园业主社区</span>
+            <span>服务热线：010-8888-6666</span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="#" class="logo">
+                    金汇花园<span>HOME</span>
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="#" class="active">首页</a></li>
+                        <li><a href="#about">楼盘概况</a></li>
+                        <li><a href="#amenities">周边配套</a></li>
+                        <li><a href="#community">社区动态</a></li>
+                        <li><a href="#contact">联系我们</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <button class="btn btn-outline">业主登录</button>
+                    <button class="btn btn-primary">报修服务</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>金汇花园：舒适宜居的理想家园</h1>
+            <p>位于城市核心区域，绿意盎然，交通便捷。我们致力于为每一位业主提供高品质的居住环境与贴心服务。</p>
+            <div style="display: flex; gap: 15px; justify-content: center;">
+                <a href="#about" class="btn btn-primary" style="padding: 12px 30px; font-size: 1rem;">了解楼盘</a>
+                <a href="#contact" class="btn btn-outline" style="padding: 12px 30px; font-size: 1rem; color: #fff; border-color: #fff;">预约看房</a>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <h3>20+</h3>
+                    <p>年建筑品质</p>
+                </div>
+                <div class="stat-item">
+                    <h3>98%</h3>
+                    <p>业主满意度</p>
+                </div>
+                <div class="stat-item">
+                    <h3>5A</h3>
+                    <p>物业服务标准</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section features">
+        <div class="container">
+            <div class="feature-grid">
+                <article class="feature-card">
+                    <div class="feature-icon">🌳</div>
+                    <h3>生态园林</h3>
+                    <p>3000平米中央花园，四季常青，让您推窗见绿，出门入园。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon">🚇</div>
+                    <h3>交通便利</h3>
+                    <p>紧邻地铁X号线，多条公交线路环绕，出行无忧。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon">🏫</div>
+                    <h3>名校学区</h3>
+                    <p>周边汇聚优质教育资源，从幼儿园到高中一站式教育配套。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>安全智能</h3>
+                    <p>24小时人防技防结合，智慧社区系统，守护家庭安全。</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Info Section -->
+    <section id="about" class="section project-info">
+        <div class="container">
+            <div class="info-layout">
+                <div class="info-image">
+                    <img src="https://picsum.photos/seed/building/600/400" alt="金汇花园建筑外观">
+                </div>
+                <div class="info-content">
+                    <h3>项目概况</h3>
+                    <p>金汇花园项目占地约5万平方米，总建筑面积约12万平方米，由6栋高层住宅楼及配套商业裙楼组成。小区设计遵循现代简约风格，外立面采用高品质石材与玻璃幕墙结合，彰显尊贵气质。</p>
+                    <p>户型设计合理，主力户型涵盖80-140平米的两房至四房，南北通透，采光极佳。每户均配备优质入户门、品牌电梯及智能门锁系统。</p>
+                    <ul class="info-list">
+                        <li>容积率：2.8</li>
+                        <li>绿化率：35%</li>
+                        <li>车位配比：1:1.2</li>
+                        <li>物业公司：金汇物业</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section id="amenities" class="section amenities">
+        <div class="container">
+            <div class="section-header">
+                <h2>完善配套</h2>
+                <p>全龄段生活配套，满足您的日常所需</p>
+            </div>
+            <div class="amenities-grid">
+                <div class="amenity-item">
+                    <div style="font-size: 2rem;">🏊</div>
+                    <h4>室内恒温泳池</h4>
+                    <p>四季畅游</p>
+                </div>
+                <div class="amenity-item">
+                    <div style="font-size: 2rem;">🏃</div>
+                    <h4>健身中心</h4>
+                    <p>专业器械</p>
+                </div>
+                <div class="amenity-item">
+                    <div style="font-size: 2rem;">📚</div>
+                    <h4>社区图书馆</h4>
+                    <p>书香社区</p>
+                </div>
+                <div class="amenity-item">
+                    <div style="font-size: 2rem;">🛒</div>
+                    <h4>生鲜超市</h4>
+                    <p>便民服务</p>
+                </div>
+                <div class="amenity-item">
+                    <div style="font-size: 2rem;">👶</div>
+                    <h4>儿童游乐场</h4>
+                    <p>亲子时光</p>
+                </div>
+                <div class="amenity-item">
+                    <div style="font-size: 2rem;">🏓</div>
+                    <h4>多功能会所</h4>
+                    <p>社交聚会</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="section community">
+        <div class="container">
+            <div class="section-header">
+                <h2>社区动态</h2>
+                <p>关注金汇花园最新通知与业主活动</p>
+            </div>
+            <div class="news-grid">
+                <article class="news-card">
+                    <div class="news-content">
+                        <span class="news-date">2023-10-24</span>
+                        <h4>关于小区电梯年检的通知</h4>
+                        <p>物业服务中心通知：为确保居民乘梯安全，计划于下周对A栋电梯进行例行年检，届时将暂停运行。</p>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <div class="news-content">
+                        <span class="news-date">2023-10-20</span>
+                        <h4>金汇花园秋季业主运动会圆满落幕</h4>
+                        <p>本次活动吸引了百余位业主参与，不仅增进了邻里感情，也展现了积极向上的社区风貌。</p>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <div class="news-content">
+                        <span class="news-date">2023-10-15</span>
+                        <h4>社区消防演练活动预告</h4>
+                        <p>为了提高大家的安全意识，物业联合消防部门将于本月底举办消防演练，欢迎各位业主参加。</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>金汇花园</h4>
+                    <p style="font-size: 0.9rem; line-height: 1.8;">
+                        金汇花园致力于打造和谐、宜居、智能的现代化社区。我们始终坚持以业主为中心，提供全方位、高品质的服务。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速导航</h4>
+                    <ul>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">物业服务</a></li>
+                        <li><a href="#">装修指南</a></li>
+                        <li><a href="#">业主公约</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系方式</h4>
+                    <ul>
+                        <li>地址：北京市朝阳区金汇路88号</li>
+                        <li>电话：010-8888-6666</li>
+                        <li>邮箱：service@jinhuigarden.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 金汇花园 版权所有 | 京ICP备XXXXXXXX号</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+          </html>
